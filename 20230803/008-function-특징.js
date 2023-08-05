@@ -32,7 +32,7 @@ function test() {
     console.log('hello')
 }
 test() // 3번 출력 - return이후는 출력 안함. 에러코드가 있어도, js엔진이 보지않는 공간에서는 에러를 출력하지 않는다.
-//return이 undefined 값을 갖고 있다. return 을 안쓰면, undefined 반환한다.
+//return이 undefined 값을 갖고 있다. 
 
 //단락평가에서도 마찬가지다.
 function errorCode() {
