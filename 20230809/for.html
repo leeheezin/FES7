@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>for</title>
+</head>
+<body>
+    <script>
+        //기존코드
+        const cars = ["BMW", "Volvo", "Saab", "Ford", "Flat", "Audi"];
+        let text = ''
+        text += '<section><h2>' + cars[0] + '</h2></section>'
+        text += '<section><h2>' + cars[1] + '</h2></section>'
+        text += '<section><h2>' + cars[2] + '</h2></section>'
+        text += '<section><h2>' + cars[3] + '</h2></section>'
+        text += '<section><h2>' + cars[4] + '</h2></section>'
+        text += '<section><h2>' + cars[5] + '</h2></section>'
+        document.body.innerHTML = text
+        //반복문
+        const cars2 = ["BMW", "Volvo", "Saab", "Ford", "Flat", "Audi"];
+        let text2 = ''
+        for (let i = 0; i < cars2.length; i++) {
+            text2 += '<section><h2>' + cars2[i] + '</h2></section>' 
+        }
+        text2
+
+        //연습 10-1까지 출력
+        for(let x=10; x>=1; x--){
+            document.write(x)
+        }
+    </script>
+</body>
+</html>

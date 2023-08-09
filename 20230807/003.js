@@ -3,6 +3,10 @@ let arr = [10, 20, 30, 40, 50]
 arr.forEach((value, index, array) => {
     console.log(value, index, array)
 })
+// Current Value (명명된 매개변수) - 처리할 현재 요소
+// Index (선택적 매개변수) - 처리할 현재 요소의 인덱스
+// Array (선택적 매개변수) - forEach 메서드를 호출한 배열
+// forEach()는 각 배열 요소에 대해 한 번씩 callback 함수를 실행합니다. map()과 reduce()와는 달리 undefined를 반환하기 때문에 메서드 체인의 중간에 사용할 수 없습니다.
 
 // 문제1. forEach를 사용해서 배열의 모든 요소를 더하는 코드를 작성하세요.
 let arr = [10, 20, 30, 40, 50]
