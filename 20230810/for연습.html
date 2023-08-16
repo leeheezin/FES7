@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <script>
+        const person = {
+        name: '재현',
+        age: 20,
+        gender: 'male'
+        };
+        // for(let key in person){
+        //     console.log(`${key} : ${person[key]}`)
+        // }
+        const keys = Object.keys(person); //배열로 변환
+
+        for (let i = 0; i < keys.length; i++) {
+            const key = keys[i];
+            console.log(`${keys[i]}: ${person[keys[i]]}`);
+        }
+    </script>
+</body>
+</html>

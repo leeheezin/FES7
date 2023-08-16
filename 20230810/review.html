@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <script>
+        const avengers = ['spiderman', 'ironman', 'hulk', 'thor'];
+
+        //splice (요소삭제,변경)
+        console.log(avengers.splice(3,1)) // index 3, 1개를 제거
+        console.log(avengers.splice(3,0,'blackWidow')) // index 3을-> 3번째 문자열로 교체
+
+        //slice(요소 잘라서 새로운 배열)
+        console.log(avengers.slice(0,2)) //index2전까지만 잘라내서 새로운 배열 반환
+
+        //sort (배열요소 사전적정렬)
+        console.log(avengers.sort()) //알파벳순 ['blackWidow', 'hulk', 'ironman', 'spiderman'] 
+        //[10, 20, 30].sort((a, b) => a - b) 오름차순
+        //[10, 20, 30].sort((a, b) => b - a) 내림차순
+        //sort함수내에서 호출되는 함수를 컴페어함수라고 한다. 비교함수라고도 한다.
+    </script>
+</body>
+</html>
