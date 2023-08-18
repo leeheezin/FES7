@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <div class="box" style="width: 500px; height: 500px; background: #000;"></div>
+    <button class="red">빨강</button>
+    <button class="yellow">노랑</button>
+    <button class="green">초록</button>
+    <script>
+        const box = document.querySelector('.box')
+        const redBox = document.querySelector('.red')
+        const yellowBox = document.querySelector('.yellow')
+        const greenBox = document.querySelector('.green')
+
+        redBox.addEventListener('click', (e)=>{
+            box.style.background = "red" //inline style로 들어가서 비추
+        })
+        yellowBox.addEventListener('click', (e)=>{
+            box.style.background = "yellow"
+        })
+        greenBox.addEventListener('click', (e)=>{
+            box.style.background = "green"
+        })
+    </script>
+</body>
+</html>

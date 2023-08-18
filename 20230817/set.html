@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <script>
+        let a = new Set('abc')
+        let b = new Set('cde')
+
+        const cross = [...a].filter((value)=>{
+            return b.has(value)
+        })
+        console.log(cross) // 공통적인 ['c'] 만 뽑아서 출력 교집함
+        let union = new Set([...a].concat(...b)); //{'a', 'b', 'c', 'd', 'e'} 합집합
+        let dif = [...a].filter(x => !b.has(x)); //['a', 'b'] 차집합
+
+
+        //로또 set으로 변경
+        function lottoNumbers() {
+            const lottoSet = new Set()
+            
+            // while (lotto.length < 6) {
+                while (lottoSet.size < 7) {
+                const randomNum = Math.floor(Math.random() * 45) + 1;
+                
+                // if (!lotto.includes(randomNum)) {
+                //     lotto.push(randomNum);
+                // }
+                lottoSet.add(randomNum)
+            }
+            
+            // return lotto;
+            return lottoSet
+        }
+        console.log(lottoNumbers())
+    </script>
+</body>
+</html>

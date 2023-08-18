@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <script>
+        //클로저 - 함수 내부에서 정의된 함수로, 함수 내부에서 선언한 변수에 접근할 수 있습니다. 
+        //클로저는 함수와 그 함수가 선언된 렉시컬 스코프의 조합을 나타내며, 외부 함수의 변수에 접근하거나 변경할 수 있는 기능을 제공합니다. 
+        const person = function () {
+            let age = 15; // 외부에서 접근하지 못하게
+
+            return { // 접근권한은 return객체
+                name: 'jaehyun',
+
+                getAge() {
+                    return age;
+                },
+
+                setAge(val) {
+                    age = val
+                }
+            }
+        }
+
+        const man = person();
+
+        ////////
+
+        const outer = function () {
+            let a = 1;
+
+            const inner = function () {
+                let b = 5;
+                let c = 6;
+                a = a + b + c;
+
+                console.log(a);
+            }
+
+            return inner;
+        }
+
+        const newInner = outer();
+
+        newInner();
+        //////
+        function makeAdder(x) { //클로저를 반환하는 함수
+            var y = 1; //클로저함수 정의
+            return function(z) { //'클로저함수' z를 입력받아 
+                y = 100; // 외부함수 변수에 접근가능해서 y값은 변경됨.
+                return x + y + z; // 리턴값 반환
+            };
+        }
+        var add5 = makeAdder(5);
+        var add10 = makeAdder(10);
+
+        console.log(add5(2));  // 107 (x:5 + y:100 + z:2)
+        console.log(add10(2)); // 112 (x:10 + y:100 + z:2)
+    </script>
+</body>
+</html>
