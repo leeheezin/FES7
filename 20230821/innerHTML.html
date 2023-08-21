@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        p {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <p style="text-align: center;"></p>
+    <input type="text">
+    <button>작동!</button>
+
+    <script>
+        const text = document.querySelector('p')
+        const inp = document.querySelector('input')
+        const btn = document.querySelector('button')
+        btn.addEventListener('click',function(){
+            text.textContent = inp.value
+        })
+        //input에 <img src='x' onerror='alert(1)'> 이런코드를 넣으면 innerHTML은 인식됨. 보안문제
+        //사용자 입력값 받을때는 textContent로 받는게 좋다.
+    </script>
+</body>
+</html>

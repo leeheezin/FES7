@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <figure>
+        <img src="" alt="청바지 삼종세트">
+        <figcaption>상품가격 : 29,900원<span>VIP회원이라면 29,900원!!</span></figcaption>
+        <span></span>
+    </figure>
+    <script>
+        const cost = document.querySelector('figcaption')
+        const msg = document.querySelector('span')
+        console.log(cost.textContent)
+        console.log(cost.innerText)
+        msg.innerHTML=
+        `<p>경고!</p>`
+    </script>
+</body>
+</html>
