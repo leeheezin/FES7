@@ -40,7 +40,7 @@
         btns.forEach(item=>{
             item.addEventListener('click', (e)=>{
                 const result = confirm('삭제하시겠습니까?')
-                e.stopPropagation()
+                e.stopPropagation() //preventDefault()로는 alert이 실행됨
                 if(result) {
                     item.parentElement.remove() //.closest('p')
                 }
