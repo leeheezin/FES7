@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <article class="parent">
+        <ol>
+            <li><button class="btn-first" type="button">버튼1</button></li>
+            <li><button type="button">버튼2</button></li>
+            <li><button type="button">버튼3</button></li>
+        </ol>
+    </article>
+    
+    <script>
+        const parent = document.querySelector('.parent');
+        parent.addEventListener('click',  (event) =>{
+            console.log(event.target);
+            console.log(this) //화살표함수로하면 상위스코프 현재 전역으로 window가리킴
+            console.log(event.currentTarget); //this와 같음
+            if(event.target.nodeName === "BUTTON") { //대문자로. li로 넣으면
+                event.target.textContent = "버튼4" //textContent,innerHTML 전부 텍스트로 바꿔버림
+            }
+        })
+
+        myObj={
+            name: 'jin',
+            walk() { //walk는 myObj의 메소드로 this는 myObj가리킴
+                parent.addEventListener('click', ()=>{
+                    console.log(this.name, 'is walking')
+                })
+            }
+        }
+    </script>
+</body>
+</html>

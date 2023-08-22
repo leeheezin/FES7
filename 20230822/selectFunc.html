@@ -93,11 +93,11 @@
     <article class="cont-select">
         <button class="btn-select">나의 최애 프로그래밍 언어</button>
         <ul class="list-member">
-            <li><button type="button">Python</button></li>
+            <!-- <li><button type="button">Python</button></li>
             <li><button type="button">Java</button></li>
             <li><button type="button">JavaScript</button></li>
             <li><button type="button">C#</button></li>
-            <li><button type="button">C/C++</button></li>
+            <li><button type="button">C/C++</button></li> -->
         </ul>
     </article>
     <script>
@@ -108,14 +108,26 @@
             btn.classList.toggle('on') //add,remove말고 toggle로
         })
         //2. 버튼 누르면 버튼의텍스트가 메인버튼에 적용되야함
-        lang.forEach(lang => {
-            lang.addEventListener('click', ()=>{
-                btn.textContent = lang.textContent
-                btn.classList.remove('on')
-            });
-        });
+        // lang.forEach(lang => {
+        //     lang.addEventListener('click', ()=>{
+        //         btn.textContent = lang.textContent
+        //         btn.classList.remove('on')
+        //     });
+        // });
         //3. li를 동적으로 생성해주세요.
+        const list = document.querySelector('.list-member')
+        
+        const btnTxt = ['Python','Java','JavaScript','C#','C/C++']
+        btnTxt.forEach(text=>{
+                const li = document.createElement('li')
+                li.innerHTML= `<button type='button'>${text}</button>`
+                list.append(li)
+                })
         //4. 이벤트를 이벤트위임을 통해서 구현해주세요.
+        list.addEventListener('click',(e)=>{
+            btn.textContent = event.target.textContent
+            btn.classList.remove('on')
+        })
     </script>
 </body>
 </html>

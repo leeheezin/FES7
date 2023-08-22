@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <form action="">
+        <button type="submit" class="submit">제출</button>
+    </form>
+
+    <h1>나의 todo list</h1>
+    <p>1. 오늘 저녁에는 부대찌게를 끓여 먹겠다.<button type="button">삭제</button></p>
+    <p>2. 후식으로 슈팅스타를 먹겠다.<button type="button">삭제</button></p>
+    <p>3. 자기 전에 반드시 내일 아침 메뉴를 생각해두겠다.<button type="button">삭제</button></p>
+    <script>
+        const btn = document.querySelector('button')
+        btn.addEventListener('click', (event)=>{
+            event.preventDefault() // 기본동작 차단
+            console.log('submit')
+            event.stopPropagation() //동작,이벤트 흐름 차단
+        })
+        //캡처링이벤트로 만들면 버블링이벤트에서 전파막아도 소용없음
+        // document.body.addEventListener('click', ()=>{
+        //     console.log('event')
+        // },true)
+
+
+        ///stopPropagation() 실습
+        //p태그를 클릭하면 컨텐츠 보여주기     
+        const p = document.querySelectorAll('p')
+        p.forEach(item=>
+            item.addEventListener('click', ()=>{{
+            alert(item.firstChild.textContent)
+        }}))
+        //btns 클릭하면 컨펌실행후 삭제
+        const btns = document.querySelectorAll('button')
+        btns.forEach(item=>{
+            item.addEventListener('click', (e)=>{
+                const result = confirm('삭제하시겠습니까?')
+                e.stopPropagation()
+                if(result) {
+                    item.parentElement.remove() //.closest('p')
+                }
+            })
+        })
+    </script>
+</body>
+</html>
