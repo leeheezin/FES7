@@ -1,0 +1,16 @@
+.box{
+    &-1 {
+        background-color: red;
+    }
+    &-2 {
+        background-color: green;
+    }
+    &-3 {
+        background-color: blue;
+    }
+}
+div {
+    &:hover {
+        background-color: red;
+    }
+}

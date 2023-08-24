@@ -1,0 +1,16 @@
+// @mixin 이름(매개변수) //생성
+// @include 이름(인수)  //사용
+
+@mixin flex($align) {
+    height: 200px;
+    background-color: blue;
+    display: flex;
+    flex-direction: row;
+    justify-content: $align; //따옴표
+    align-items: #($align); //따옴표사라짐
+}
+
+
+.one {
+    @include flex('center')
+}

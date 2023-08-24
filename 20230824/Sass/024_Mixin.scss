@@ -1,0 +1,37 @@
+// input: box(100, r) //사각형 rect
+// output:
+.one {
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+    border: 1px solid black;
+}
+
+// input: box(100,c) // c는 원, circle 입니다.
+// output:
+.one {
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+    border: 1px solid black;
+    border-radius: 50%;
+}
+
+@mixin box($size, $radius){
+    width: $size;
+    height: $size;
+    background-color: blue;
+    @if $radius == 'r' { //소괄호를 하지 않아도 됩니다. 'r'와 r는 같습니다.
+        border: 1px solid black;
+        
+    } @else if $radius == 'c' {
+        border: 1px solid black;
+        border-radius: 50%;
+    }
+}
+.one {
+    @include box(100px,r) //입력값이 꼭 따옴표가 있을 필요는 없습니다.
+}
+.one {
+    @include box(100px,'c')
+}

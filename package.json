@@ -1,0 +1,16 @@
+{
+  "name": "fes7",
+  "version": "1.0.0",
+  "description": "프론트엔드스쿨 7기",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "node-sass -w -r scss/style.scss src/output.css "
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-sass": "^9.0.0"
+  }
+}
