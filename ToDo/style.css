@@ -1,0 +1,40 @@
+/* reset */
+ul,li {
+    padding: 0;
+    list-style: none;
+}
+button {
+    border: none;
+    background: inherit ; 
+    border:none; 
+    box-shadow:none; 
+    border-radius:0; 
+    padding:0; 
+    overflow:visible; 
+    cursor:pointer
+}
+
+#wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#title {color: royalblue;}
+div {margin: auto;}
+button {
+    border-radius: 5px;
+    color: #fff;
+    padding: 5px 15px;
+    background: royalblue;
+    margin-left: auto;
+}
+li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 7px;
+}
+.end {
+    display: none;
+    margin-top: 1em;
+}
