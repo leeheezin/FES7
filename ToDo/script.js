@@ -1,12 +1,14 @@
 const text = document.querySelector('.text');
 const add = document.querySelector('.add');
 const addList = document.querySelector('.addList');
-const end = document.querySelector('.end');
+// const selEnd = document.querySelector('.selDel')
+const end = document.querySelector('.allDel');
 
-const input = document.createElement("input");
+const input = document.createElement("input")
 input.setAttribute("type", "checkbox");
-const span = document.createElement('span');
+const label = document.createElement('label');
 const del = document.createElement('button');
+del.className = 'selDel'
 del.textContent = '삭제';
 
 // 아이템 추가할 때 로컬 스토리지에 저장하는 함수
@@ -22,21 +24,25 @@ if (storedItems.length > 0) {
     storedItems.forEach(item => {
         const list = document.createElement('li');
         addList.append(list);
-
         const itemInput = input.cloneNode(true);
-        const itemSpan = span.cloneNode(true);
+        const itemlabel = label.cloneNode(true);
         const itemDel = del.cloneNode(true);
 
-        list.append(itemInput, itemSpan, itemDel);
-        itemSpan.textContent = item.text;
+        list.append(itemInput, itemlabel, itemDel);
+        itemlabel.textContent = item.text;
+        itemlabel.innerHTML = item.checked ? `<del>${item.text}</del>` : item.text; // 취소선 여부 기반으로 설정
         itemInput.checked = item.checked;
-        items.push({ input: itemInput, span: itemSpan, del: itemDel, text: item.text, checked: item.checked });
+        items.push({ input: itemInput, label: itemlabel, del: itemDel, text: item.text, checked: item.checked });
         cancel(itemInput, itemDel);
+
+        addList.prepend(list);
     });
 
     end.style.display = 'block';
 }
 
+// 로컬 스토리지에 저장된 아이템 정보 키
+const localStorageKey = 'items';
 
 add.addEventListener('click', () => {
     const textValue = text.value.trim()
@@ -45,36 +51,61 @@ add.addEventListener('click', () => {
     addList.append(list)
 
     const itemInput = input.cloneNode(true)
-    const itemSpan= span.cloneNode(true)
+    const itemlabel= label.cloneNode(true)
     const itemDel = del.cloneNode(true)
-    
-    list.append(itemInput, itemSpan, itemDel)
-    itemSpan.textContent = textValue
+    // 별표(즐겨찾기) 버튼 생성
+    // const favoriteBtn = document.createElement('button');
+    // favoriteBtn.textContent = '⭐️';
+    // favoriteBtn.className = 'favorite';
+
+    list.append(itemInput, itemlabel, itemDel)
+    itemlabel.textContent = textValue
 
     itemInput.checked = false; // 새로운 아이템이므로 항상 checked는 false로 초기화
 
     //각 아이템 객체로저장 이벤트리스너 등록
-    const newItem = {input: itemInput, span: itemSpan, del: itemDel, text: textValue, checked: false };
+    const newItem = {input: itemInput, label: itemlabel, del: itemDel, text: textValue, checked: false };
     items.push(newItem);
     cancel(itemInput, itemDel);
     end.style.display = "block";
     text.value = ''
     // 로컬 스토리지에 아이템 추가 후 저장
-    storedItems.push(newItem);
+    storedItems.unshift(newItem);
     saveToLocalStorage();
+
+    addList.prepend(list);
+
+    // 별표(즐겨찾기) 버튼 클릭 시 해당 아이템을 맨 위로 이동
+    // favoriteBtn.addEventListener('click', () => {
+    //     const index = items.findIndex(item => item.favoriteBtn === favoriteBtn);
+    //     if (index !== -1) {
+    //         const [item] = items.splice(index, 1); // 해당 아이템 제거
+    //         items.unshift(item); // 맨 위로 추가
+    //         addList.prepend(item.list); // 화면에서도 맨 위로 이동
+    //         saveToLocalStorage(); // 로컬 스토리지 업데이트
+    //     }
+    // });
 })
 
 
 // 아이템 삭제 및 체크박스 이벤트 처리
 function cancel(input, del) {
-    input.addEventListener('click', () => {
-        const textCont = input.nextElementSibling.textContent;
-        if (input.checked) {
-            input.nextElementSibling.innerHTML = `<del>${textCont}</del>`;
-        } else {
-            input.nextElementSibling.innerHTML = textCont;
+    function inputToggle() {
+        // if (input.checked) {
+        //     textCont.innerHTML = `<del>${textCont.textContent}</del>`;
+        // } else {
+        //     textCont.innerHTML = textCont.textContent;
+        // }
+        const textCont = input.nextElementSibling;
+        const itemIndex = items.findIndex(item => item.input === input);
+        if (itemIndex !== -1) {
+            items[itemIndex].checked = input.checked
+            textCont.innerHTML = input.checked ? `<del>${textCont.textContent}</del>` : textCont.textContent;
+            saveToLocalStorage();
         }
-    });
+    }
+    input.addEventListener('click',inputToggle)
+        
 
     del.addEventListener('click', () => {
         const result = confirm('삭제하시겠습니까?');
@@ -85,14 +116,14 @@ function cancel(input, del) {
                 saveToLocalStorage();
                 del.parentElement.remove();
 
-                // 추가된 부분: 로컬 스토리지에서도 아이템 제거 후 저장
+                //로컬 스토리지에서도 아이템 제거 후 저장
                 storedItems = storedItems.filter(item => item.del !== del);
                 saveToLocalStorage();
             }
         }
-    });
+    })
 }
-
+// 전체 삭제
 end.addEventListener('click', () => {
     const allResult = confirm('전체 삭제하시겠습니까?');
     if (allResult) {

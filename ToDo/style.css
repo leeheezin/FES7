@@ -15,17 +15,25 @@ button {
 }
 
 #wrap {
+    box-sizing: border-box;
+    border: 1px solid rgb(4, 51, 19);
+    padding: 2% 5%;
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-#title {color: royalblue;}
-div {margin: auto;}
+#title {color: rgb(4, 51, 19);}
+.text {padding: 2px;}
 button {
     border-radius: 5px;
     color: #fff;
     padding: 5px 15px;
-    background: royalblue;
+    background: rgb(4, 51, 19);;
+}
+.selDel, .favorite {
     margin-left: auto;
 }
 li {
@@ -34,7 +42,6 @@ li {
     gap: 10px;
     padding-bottom: 7px;
 }
-.end {
+.allDel {
     display: none;
-    margin-top: 1em;
 }

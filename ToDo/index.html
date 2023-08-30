@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To buy list</title>
+    <title>ToDo list</title>
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
@@ -13,10 +13,14 @@
         <div>
             <input type="text" class="text">
             <button class="add" type="submit">추가</button>
-            <button class="end" type="button">전체 삭제</button>
         </div>
-        <ul class="addList"></ul>
-        
+        <div>
+            <ul class="addList"></ul>
+        </div>
+        <div class="delete">
+            <!-- <button class="selDel" type="button">선택 삭제</button> -->
+            <button class="allDel" type="button">전체 삭제</button>
+        </div>
     </div>
     <script src="./script.js"></script>
 </body>
