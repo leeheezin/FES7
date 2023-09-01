@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <script>
+        'use strict' //엄격모드 맨위에 적기
+
+        //선언하지 않은 변수에 값을 할당할 수 없다.
+        str = 'hello'
+        //읽기 전용객체에 값을 할당하면 안됨.
+        var undefined = undefined
+        Math.PI = 0
+        var Infinity = 100
+        //지울수 없는 값 지우려고하면 에러
+        const employee = {
+            firstName: 'john'
+        }
+        delete Object.prototype
+        //함수 파라메터에 중복된 이름을 사용할 수 없음
+        function myFunc(a,a,b) {
+            console.log(a+a+b)
+        }
+        myFunc(1,2,3) //a가 2로 재할당됨 2+2+3
+
+        const aespa = ["카리나", "윈터", "지젤", "닝닝"]
+        // 결과 : ['카리나💖', '윈터💖', '지젤💖', '닝닝💖']
+
+        const aespa2 = aespa.map((i)=>{
+            return i+'💖'
+        })
+        // 원본 데이터 보존하는 습관
+    </script>
+</body>
+</html>
