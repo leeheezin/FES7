@@ -1,28 +1,22 @@
-import './App.css';
+import ColorText from "./Components/ColorText";
+import Hello from "./Components/Hello";
+import HElloProps from "./Components/HelloProps";
+import Resume from "./Components/Resume";
+import Time from "./Components/Time";
 
 function App() {
-  const name = '라이켓'
-  function 함수(){
-    return '함수'
-  }
-  const someStyle = {color:'red'}
-  const time = new Date()
-  const year = time.getFullYear()
-  const month = time.getMonth()+1
-  const date = time.getDate()
-  const hour = time.getHours()
-  const minute = time.getMinutes()
-  const second = time.getSeconds()
+
   return (
     <div>
-      <h1 className="hi">안녕 라이켓 {함수() ? '함수': 'JSX'}!</h1>
-      <h1 className="newClass">안녕 라이켓</h1>
-      <input type="text" style={{someStyle}}/>
-      <div style={someStyle}>년: {year}</div>
-      <div>월/일: {month}/{date}</div>
-      <div>시간: {hour}시 {minute}분 {second}초</div>
+      <Hello name="gary"/>
+      <Time />
+      <ColorText color="skyblue"/>
+      <ColorText color="yellow"/>
+      <ColorText color="green"/>
+      <Resume hello="안녕하세요" name="개리" hobby="게임" food="고기" color="blue"/>
+      <HElloProps name="jaehyun" age={15} someFunc={()=>'aswesome!!!'} someJsx={<img src="https://picsum.photos/id/237/200/300"/>} someArr={[1,2,3,4]} someObj={{one:1}}/>
     </div>
   );
 }
 
-export default App;
+export default App
