@@ -39,6 +39,6 @@ export default function App5() {
     return (
         // && : 첫번째 falsy값을 반환하거나 혹은 마지막 truthy값을 반환한다(둘다참이면 뒤에값을 반환)
         // || : 첫번째 truthy값을 반환하거나, 마지막 falsy값을 반환한다
-        true || <NavBar/> 
+        true && <NavBar/> 
     )
 }

@@ -1,13 +1,16 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
 function App() {
   return (
     <BrowserRouter>
-      {/* 라우트를 감싸줍니다. */}
+      <Link to="/">home </Link>
+      <Link to="/one">one </Link>
+      <Link to="/two">two </Link>
+      <Link to="/three">three</Link>
       <Routes>
         <Route path="/" element={<Index />}/>
         <Route path="/one" element={<One name='loopy'/>}/>
-        <Route path="/two" element={<Two />}/>
+        <Route path="/two" element={<Two two = 'aaa'/>}/>
         <Route path="/three" element={<Three />}/>
       </Routes>
     </BrowserRouter>
@@ -19,11 +22,11 @@ function Index(){
 }
 
 function One({name}){
-  return <h1>{name}hello world1</h1>
+  return <h1>{name} : hello world1</h1>
 }
 
-function Two(){
-  return <h1>hello world2</h1>
+function Two({two}){
+  return <h1>{two} hello world2</h1>
 }
 
 function Three(){

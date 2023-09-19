@@ -23,6 +23,7 @@ if (storedItems.length > 0) {
     storedItems.forEach(item => {
         const list = document.createElement('li')
         addList.append(list)
+
         const itemInput = input.cloneNode(true)
         const itemlabel = label.cloneNode(true)
         const itemDel = del.cloneNode(true)
@@ -51,10 +52,6 @@ add.addEventListener('click', () => {
     const itemInput = input.cloneNode(true)
     const itemlabel= label.cloneNode(true)
     const itemDel = del.cloneNode(true)
-    // 별표(즐겨찾기) 버튼 생성
-    // const favoriteBtn = document.createElement('button')
-    // favoriteBtn.textContent = '⭐️'
-    // favoriteBtn.className = 'favorite'
 
     list.append(itemInput, itemlabel, itemDel)
     itemlabel.textContent = textValue
@@ -72,28 +69,12 @@ add.addEventListener('click', () => {
     saveToLocalStorage()
 
     addList.prepend(list)
-
-    // 별표(즐겨찾기) 버튼 클릭 시 해당 아이템 맨 위로 이동
-    // favoriteBtn.addEventListener('click', () => {
-    //     const index = items.findIndex(item => item.favoriteBtn === favoriteBtn)
-    //     if (index !== -1) {
-    //         const [item] = items.splice(index, 1) // 해당 아이템 제거
-    //         items.unshift(item) // 맨 위로 추가
-    //         addList.prepend(item.list) // 화면에서도 맨 위로 이동
-    //         saveToLocalStorage() // 로컬 스토리지 업데이트
-    //     }
-    // })
 })
 
 
 // 아이템 삭제,체크박스 체크와 취소선
 function cancel(input, del) {
     function inputToggle() {
-        // if (input.checked) {
-        //     textCont.innerHTML = `<del>${textCont.textContent}</del>`
-        // } else {
-        //     textCont.innerHTML = textCont.textContent
-        // }
         const textCont = input.nextElementSibling
         const itemIndex = items.findIndex(item => item.input === input)
         if (itemIndex !== -1) {

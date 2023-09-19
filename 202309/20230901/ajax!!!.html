@@ -7,6 +7,7 @@
     <title></title>
 </head>
 <body>
+    <h1>hello</h1>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
         fetch('https://codingapple1.github.io/price.json') //get요청 
@@ -55,6 +56,8 @@
         //자주보는 에러 CORS 보안때문이라 실무아니면 아래코드 써놓으면 모든url ajax요청으로 가능
         // var cors = require('cors')
         // app.use(cors())
+        const h1 = document.querySelector('h1')
+	h1.innerHTML = '<p>bye</p>'
     </script>
 </body>
 </html>

@@ -1,0 +1,50 @@
+body {
+    background: #A5B6EE;
+}
+.container {display: flex; flex-direction: column;}
+
+.inner {margin: 0 auto;}
+.logo {text-align: center; margin: 50px;}
+.timer-wrap {
+    width: 400px;
+    height: 360px;
+    background: #374B7C;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    color: #fff;
+}
+.timer-box, .btn-box {
+    text-align: center;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+.box {
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 3rem;
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(#304577,#4C65A0);
+}
+.timer-box span {
+    color: #fff;
+    padding-top: 14px;
+    display: block;
+}
+.timer-hrs::after,.timer-min::after {
+    content:'';
+    top: 45%;
+    width: 6px;
+    height: 26px;
+    position: absolute;
+    display: block;
+    background: url('./images/dot.png') no-repeat;
+}
+.timer-hrs::after{left: 31%;}
+.timer-min::after {right: 31%;}

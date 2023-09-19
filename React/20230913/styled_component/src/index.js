@@ -6,9 +6,7 @@ import App2 from "./App2";
 import App3 from "./App3";
 import App4 from "./App4";
 import App5 from "./App5";
-import App21 from "./App21";
-import Todo from "./Todo";
 
 const container = document.getElementById("root");
 const root = createRoot(container);
-root.render(<Todo/>);
+root.render(<App4/>);
