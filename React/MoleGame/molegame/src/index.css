@@ -1,0 +1,38 @@
+* {margin: 0; padding: 0;}
+ol {
+    display: grid; 
+    gap: 10px;
+    grid-template-columns: repeat(5, 1fr);
+    list-style: none;
+}
+h1 {text-align: center;}
+img {
+    width: 100%;
+    vertical-align: top;
+}
+.startEnd {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.startEnd button {
+    border: 0;
+    color: #fff;
+    width: 50px;
+    border-radius: 10px;
+    height: 30px;
+    background: brown;
+}
+.mole {
+    height: 0;
+    cursor: pointer;
+    transition: transform 0.2s ease-in;
+    transform: translateY(50%);
+}
+.mole.show {
+    transform: translateY(0);
+    height: 100px;
+}
+/* .mole.hidden {
+    display: none;
+} */

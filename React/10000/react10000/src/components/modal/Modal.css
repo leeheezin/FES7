@@ -1,7 +1,6 @@
 /* modal 스타일 시작 */
 #modal {
-    display: none;
-    /* display: flex; */
+    display: flex;
     justify-content: center;
     position: fixed;
     align-items: center;
