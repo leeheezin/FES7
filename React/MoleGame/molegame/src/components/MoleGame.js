@@ -29,18 +29,23 @@ export default function MoleGame() {
             setTimeout(() => {
             newMoles[randomIndex] = false;
             setMoles(newMoles);
-            setTime(time-1)
-            }, 700);
-        }, 700);
-        }
-        if(time === 0) {
-            endGame()
+            setTime((prevTime)=>{
+                if(prevTime === 1){
+                    alert(`짝짝짝! 점수는 ${score} 입니다.`)
+                    setIsGameRunning(false)
+                    setScore(0)
+                    setTime(30)
+                }
+                return prevTime -1
+            })
+            }, 500);
+        }, 500);
         }
         // 컴포넌트 언마운트 시 clearInterval을 통해 간격을 해제
         return () => {
         clearInterval(moleInterval);
         };
-    }, [isGameRunning, moles, time]);
+    }, [isGameRunning, moles, score]);
 
     const startGame = () => {
         setIsGameRunning(true);

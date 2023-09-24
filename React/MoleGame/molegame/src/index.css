@@ -37,6 +37,7 @@ img {
     vertical-align: top;
 }
 .startEnd {
+    padding-top: 3%;
     display: flex;
     justify-content: center;
     gap: 10px;
@@ -51,7 +52,7 @@ img {
     background: brown;
 }
 .moleScoreTime {
-    padding-top: 3%;
+    padding-top: 4%;
     display: flex;
     justify-content: space-around;
 }
