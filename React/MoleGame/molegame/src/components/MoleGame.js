@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import Mole from './Mole';
-import moleImg from '../images/mole.png';
+import moleImg from '../images/mole.png'
 import '../index.css';
 
 export default function MoleGame() {
   const [moles, setMoles] = useState(Array.from({ length: 5 * 5 }, () => false));
     const [isGameRunning, setIsGameRunning] = useState(false);
+    //두더지 클릭시 점수
+    const [score, setScore] = useState(0)
+    const moleClickScore = () => {
+        setScore(score+1)
+    }
+    //타이머 60초
+    const [time, setTime] = useState(30)
 
     useEffect(() => {
         let moleInterval;
@@ -22,15 +29,18 @@ export default function MoleGame() {
             setTimeout(() => {
             newMoles[randomIndex] = false;
             setMoles(newMoles);
-            }, 1000);
-        }, 1000);
+            setTime(time-1)
+            }, 700);
+        }, 700);
         }
-
+        if(time === 0) {
+            endGame()
+        }
         // 컴포넌트 언마운트 시 clearInterval을 통해 간격을 해제
         return () => {
         clearInterval(moleInterval);
         };
-    }, [isGameRunning, moles]);
+    }, [isGameRunning, moles, time]);
 
     const startGame = () => {
         setIsGameRunning(true);
@@ -41,28 +51,41 @@ export default function MoleGame() {
     const endGame = () => {
         setIsGameRunning(false);
         setMoles(Array.from({ length: 5 * 5 }, () => false))
+        setScore(0)
+        setTime(30)
     }
     return (
-        <div>
-        <h1>두더지 게임</h1>
-        <div className="startEnd">
-            <button onClick={startGame} type="button" disabled={isGameRunning}>
-            start
-            </button>
-            <button onClick={stopGame} type="button" disabled={!isGameRunning}>
-            stop
-            </button>
-            <button onClick={endGame} type="button">
-            end
-            </button>
-        </div>
-        <ol>
-            {moles.map((show, index) => (
-            <li key={index}>
-                <Mole show={show} />
-            </li>
-            ))}
-        </ol>
+        <div className='wrap'>
+            <div className='moleTit'>
+                <h1>
+                    추억의<img src={moleImg} alt='logo'/><br/>
+                    두더지 게임
+                </h1>
+                <div className="startEnd">
+                    <button onClick={startGame} type="button" disabled={isGameRunning}>
+                    Start
+                    </button>
+                    <button onClick={stopGame} type="button" disabled={!isGameRunning}>
+                    Stop
+                    </button>
+                    <button onClick={endGame} type="button">
+                    End
+                    </button>
+                </div>
+                <div className="moleScoreTime">
+                    <button type='button'>Score : {score}</button>
+                    <button type='button'>Timer : {time}</button>
+                </div>
+            </div>
+            <div className='moleList'>
+                <ol>
+                    {moles.map((show, index) => (
+                    <li key={index} onClick={()=> show && moleClickScore()}>
+                        <Mole show={show} />
+                    </li>
+                    ))}
+                </ol>
+            </div>
         </div>
     );
 }

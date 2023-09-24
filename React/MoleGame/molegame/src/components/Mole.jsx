@@ -8,5 +8,3 @@ export default function Mole({show}) {
     )
 }
 
-//두더지 생성
-//두더지 클릭이벤트
