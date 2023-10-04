@@ -70,9 +70,6 @@ img {
     transform: translateY(0);
     height: 100px;
 }
-/* .mole.hidden {
-    display: none;
-} */
 @media (max-width: 500px) {
     .wrap {padding: 10% 1%;}
     .moleList li {

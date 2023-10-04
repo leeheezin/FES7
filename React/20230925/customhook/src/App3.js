@@ -22,5 +22,5 @@ store.dispatch({type: 'INCREMENT'})
 store.dispatch({type: 'DECREMENT'})
 
 export default function App3() {
-  return 
+    return 
 }

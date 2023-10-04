@@ -4,7 +4,7 @@ import '../index.css'
 
 export default function Mole({show}) {
     return (
-        <img src={moleImg} alt="mole" className={`mole ${show ? 'show' : 'hidden'}`}/>
+        <img src={moleImg} alt='mole' className={`mole ${show ? 'show' : 'hidden'}`}/>
     )
 }
 
