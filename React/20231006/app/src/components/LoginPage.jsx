@@ -16,7 +16,7 @@ export default function LoginPage() {
                 'password': password
             }
         }
-        // 로그인해서 token 꺼내기
+        try{// 로그인해서 token 꺼내기
         const res = await fetch(reqUrl,{  
             method: 'POST',
             headers: {
@@ -27,9 +27,15 @@ export default function LoginPage() {
         })
         const json = await res.json()
         console.log(json)
+        if(!json.user) {
+            return 
+        }
         const token = json.user.token
         console.log(token)
         localStorage.setItem('token',token)
+        } catch(error) {
+            alert('에러낫지롱')
+        }
     }
 
     const inputEmail = (e)=>{
