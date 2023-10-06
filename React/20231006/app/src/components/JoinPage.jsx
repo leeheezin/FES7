@@ -5,9 +5,20 @@ const JoinPage = ()=>{
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [accountname, setAccountname] = useState('')
+    const [imgSrc, setImgsrc] = useState('https://api.mandarin.weniv.co.kr/Ellipse.png')
+    const [intro, setIntro] = useState('')
 
-    const join = (joinData) => {
-        console.log(joinData)
+    const join = async (joinData) => {
+        const reqUrl = 'https://api.mandarin.weniv.co.kr/user'
+        const res = await fetch(reqUrl,{
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(joinData)
+        })
+        const json = await res.json()
+        console.log(json)
     }
     const inputUsername = (e) => {
         setUsername(e.target.value);
@@ -23,12 +34,41 @@ const JoinPage = ()=>{
     const inputAccountname = (e) => {
         setAccountname(e.target.value);
     }
+    const inputintro = (e) => {
+        setIntro(e.target.value)
+    }
+    const uploadImg = async (imageFile) => {
+        const baseUrl = 'https://api.mandarin.weniv.co.kr/'
+        const reqUrl = baseUrl+'/image/uploadfile'
+        // 폼데이터 만들기
+        const form = new FormData()
+        // 폼데이터 값 추가하기
+        // formData.append('키','값')
+        form.append('image', imageFile)
+        // 폼바디에 넣어서 요청하기
+        const res = await fetch(reqUrl,{
+            method: 'POST',
+            body: form
+        })
+        const json = await res.json()
+        const imgUrl = baseUrl+json.filename
+        setImgsrc(imgUrl)
+    }
+    const onChangeImg = (e) => {
+        // 파일 가져오기
+        const imageFile = e.target.files[0]
+        uploadImg(imageFile)
+    }
     const submitJoin = () => {
         const joinData = {
-            username: username,
-            email: email,
-            password: password,
-            accountname: accountname
+            user: {
+                username: username,
+                email: email,
+                password: password,
+                accountname: accountname,
+                intro: intro,
+                img: imgSrc
+            }
         }
         join(joinData)
     }
@@ -52,9 +92,9 @@ const JoinPage = ()=>{
             <h2 >프로필 설정</h2>
             <p>나중에 언제든지 변경할 수 있습니다.</p>
             <label htmlFor="profileImg">
-                <img src="https://api.mandarin.weniv.co.kr/Ellipse.png" alt="" id="imagePre"/>
+                <img src={imgSrc} alt="" id="imagePre"/>
             </label>
-            <input type="file" id="profileImg" name="image" accept="image/*"/>
+            <input type="file" onChange={onChangeImg} id="profileImg"  name="image" accept="image/*"/>
             <div >
                 <label htmlFor="userNameInput">사용자 이름</label>
                 <input  value={username} onChange={inputUsername} type="text" id="userNameInput" name="username" placeholder="2~10자 이내여야 합니다."/>
@@ -65,7 +105,7 @@ const JoinPage = ()=>{
             </div>
             <div>
                 <label htmlFor="userIntroInput">소개</label>
-                <input type="text" id="userIntroInput" name="intro" placeholder="자신과 판매할 상품에 대해 소개해 주세요."/>
+                <input onChange={inputintro} type="text" id="userIntroInput" name="intro" placeholder="자신과 판매할 상품에 대해 소개해 주세요."/>
             </div>
             <button type="button" onClick={submitJoin}>감귤마켓 시작하기</button>
         </section>
