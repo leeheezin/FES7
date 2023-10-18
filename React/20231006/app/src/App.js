@@ -1,7 +1,7 @@
 import { useState } from "react";
 import JoinPage from "./components/JoinPage";
 import LoginPage from "./components/LoginPage";
-import axios from "axios"; // Axios를 임포트
+import axios from "axios";
 
 function App() {
   // 로그인기능
